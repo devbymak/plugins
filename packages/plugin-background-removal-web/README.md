@@ -15,8 +15,11 @@ npm install @imgly/plugin-background-removal-web
 
 ## Usage
 
-Adding the plugin to CE.SDK will automatically add a background removal
-canvas menu entry for every block with an image fill.
+Adding the plugin to CE.SDK will automatically register a background removal
+canvas menu component that can be rendered for every block with an image fill.
+To automatically add this button to the canvas menu, please use the `locations`
+configuration option.
+
 
 ```typescript
 import CreativeEditorSDK from '@cesdk/cesdk-js';
@@ -36,7 +39,10 @@ const config = {
 const cesdk = await CreativeEditorSDK.create(container, config);
 await cesdk.addDefaultAssetSources(),
   await cesdk.addDemoAssetSources({ sceneMode: 'Design' }),
-  await cesdk.unstable_addPlugin(BackgroundRemovalPlugin());
+  await cesdk.unstable_addPlugin(BackgroundRemovalPlugin({
+    // This will automatically prepend a button to the canvas menu
+    ui: { locations: 'canvasMenu' }
+  }));
 
 await cesdk.createDesignScene();
 ```
