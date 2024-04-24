@@ -1,6 +1,7 @@
 import type CreativeEditorSDK from '@cesdk/cesdk-js';
 
 import BackgroundRemovalPlugin from '@imgly/plugin-background-removal-web';
+import VectorizerPlugin from '@imgly/plugin-vectorizer-web';
 import RemoteAssetSourcePlugin from '@imgly/plugin-remote-asset-source-web';
 
 const ENABLE_DEMO_ASSET_SOURCES = false;
@@ -11,6 +12,9 @@ async function addPlugins(cesdk: CreativeEditorSDK): Promise<void> {
     await Promise.all([
       cesdk.unstable_addPlugin(
         BackgroundRemovalPlugin({ ui: { locations: 'canvasMenu' } })
+      ),
+      cesdk.unstable_addPlugin(
+        VectorizerPlugin({ ui: { locations: 'canvasMenu' } })
       ),
       ...addDemoRemoteAssetSourcesPlugins(cesdk)
     ]);

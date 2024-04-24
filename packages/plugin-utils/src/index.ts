@@ -7,3 +7,8 @@ export { default as processFill } from './processing/processFill';
 export { default as initializeFillProcessing } from './processing/initializeFillProcessing';
 
 export { default as registerFillProcessingComponents } from './processing/registerFillProcessingComponents';
+
+export {
+  type Location,
+  type UserInterfaceConfiguration
+} from './types/UserInterfaceConfiguration';
